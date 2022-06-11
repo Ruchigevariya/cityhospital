@@ -66,5 +66,4 @@ function Contact(props) {
 
     );
 }
-{/* <main id="main"> */ }
 export default Contact;
