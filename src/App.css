@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.login-form h3{
+  padding: 20px;
+}
+.login-form{
+  width:100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: auto;
+  height: 100%;
+}
