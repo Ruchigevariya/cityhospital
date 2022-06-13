@@ -13,7 +13,7 @@ function LoginSignUp(props) {
             <Label>Password</Label>
             <Input type="password" placeholder='Password'/>
           </FormGroup>
-           <div class="row mb-4">
+          <div class="row mb-4">
           <div class="col d-flex"> 
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="form2Example31" checked />
@@ -21,7 +21,7 @@ function LoginSignUp(props) {
             </div>
           </div>
         </div>
-        <Button className='mb-3'>Login</Button>
+        <Button>Login</Button>
 
         </Form>
         
