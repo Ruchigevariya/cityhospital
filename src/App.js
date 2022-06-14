@@ -9,7 +9,8 @@ import Docters from './Container/Docters/Docters';
 import Contact from './Container/Contact/Contact';
 import About from './Container/About/About';
 import Appointment from './Container/appointment/Appointment';
-import Login_signup from './Container/Loginsignup/Login_signup';
+import Login from './Container/login/Login';
+
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <Route path="/about" exact component={About}></Route>
       <Route path="/contact" exact component={Contact}></Route>
       <Route path="/appointment" exact component={Appointment}></Route>
-      <Route path="/loginsignup" exact component={Login_signup}></Route>
+      <Route path="/login" exact component={Login}></Route>
 
     </Switch>
     <Footer/>
