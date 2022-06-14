@@ -23,34 +23,33 @@ function Header(props) {
                 <header id="header" className="fixed-top">
                     <div className="container d-flex align-items-center">
                         <div className="logo">
-                            <a href="index.html">
+                            <NavLink to="/">Home</NavLink>
                                 <h1 className="logo me-auto">City</h1><br />
                                 <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>
-                            </a>
                         </div>
                         <nav id="navbar" className="navbar order-last order-lg-0">
                             <ul>
                                 <li>
-                                <NavLink className="nav-link scrollto active" to="/">Home</NavLink>
+                                <NavLink className="nav-link scrollto active" to={"/"}>Home</NavLink>
                                 </li>
                                 <li>
-                                <NavLink  className="nav-link scrollto" to="/department">Departments</NavLink>
+                                <NavLink  className="nav-link scrollto" to={"/department"}>Departments</NavLink>
                                 </li>
                                 <li>
-                                <NavLink  className="nav-link scrollto" to="/docters">Doctors</NavLink>
+                                <NavLink  className="nav-link scrollto" to={"/docters"}>Doctors</NavLink>
                                 </li>
                                 <li>
-                                <NavLink className="nav-link scrollto" to="/about">About</NavLink>
+                                <NavLink className="nav-link scrollto" to={"/about"}>About</NavLink>
                                 </li>
                                 <li>
-                                <NavLink className="nav-link scrollto" to="/contact">Contact</NavLink>
+                                <NavLink className="nav-link scrollto" to={"/contact"}>Contact</NavLink>
                                 </li>
                             </ul>
                             <i className="bi bi-list mobile-nav-toggle" />
                         </nav>
-                        <NavLink className="appointment-btn scrollto" to="appointment"><span className="d-none d-md-inline">Make an</span>
+                        <NavLink className="appointment-btn scrollto" to={"appointment"}><span className="d-none d-md-inline">Make an</span>
                             Appointment</NavLink>
-                        <NavLink className="appointment-btn scrollto" to="/loginsignup">Login/ Signup</NavLink>
+                        <NavLink className="appointment-btn scrollto" to={"/login"}>Login/ Signup</NavLink>
                     </div>
                 </header>
             </div>
