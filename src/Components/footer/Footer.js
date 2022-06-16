@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer(props) {
     return (
@@ -17,6 +18,7 @@ function Footer(props) {
                             </p>
                         </div>
                     </div>
+                    <Link to={"/reference"}>Reference</Link>
                     <div className="social-links text-center text-md-right pt-3 pt-md-0">
                         <a href="#" className="twitter"><i className="bx bxl-twitter" /></a>
                         <a href="#" className="facebook"><i className="bx bxl-facebook" /></a>
@@ -26,7 +28,6 @@ function Footer(props) {
                     </div>
                 </div>
             </footer>
-
         </div>
     );
 }
