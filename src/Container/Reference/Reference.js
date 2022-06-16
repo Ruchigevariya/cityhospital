@@ -6,10 +6,11 @@ function Reference(props) {
 
     const handlesubmit = () => {
         console.log(nameRef.current.value , emailRef.current.value);
+
         nameRef.current.style.backgroundColor='red';
         emailRef.current.focus();
     }
-    
+
     return (
         <div>
            <input ref={nameRef} type='text' name='name'  placeholder='name'/> 
