@@ -45,7 +45,7 @@ function Medicines(props) {
     const getF = (id) =>{
         console.log(id);
     }
-    return (
+    return (    
         <div>
             <List data = {orgData} getid={getF} />
         </div>
