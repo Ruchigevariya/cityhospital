@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-
 function Login_signup(props) {
     const [usertype, setUserType] = useState('login')
     const [reset, setReset] = useState('false')
+    
     return (
         <div>
             <section id="appointment" className="appointment text-center">
