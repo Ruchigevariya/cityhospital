@@ -42,12 +42,12 @@ function Medicines(props) {
 
     ];
     
-    const get = (id) =>{
+    const getF = (id) =>{
         console.log(id);
     }
     return (
         <div>
-            <List data = {orgData} getid={get} />
+            <List data = {orgData} getid={getF} />
         </div>
     );
 }
