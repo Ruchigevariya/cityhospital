@@ -22,7 +22,7 @@ function App() {
       <Route path={"/about"} exact component={About}></Route>
       <Route path={"/contact"} exact component={Contact}></Route>
       <Route path={"/appointment"} exact component={Appointment}></Route>
-      <Route path="/loginsignup" exact component={Login_signup}></Route>
+      <Route path={"/loginsignup"} exact component={Login_signup}></Route>
     </Switch>
     <Footer/>
     </div>
