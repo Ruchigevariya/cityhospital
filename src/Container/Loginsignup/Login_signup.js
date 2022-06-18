@@ -38,15 +38,16 @@ function Login_signup(props) {
                                 <div className="validate" />
                             </div>
                         </div>
-                        <div className="row">{
+                        {
                             reset === 'true' ?
                                 null :
-                                <div className="col-md-4 form-group mt-3 mt-md-0">
-                                    <input type="password" className="form-control" name="password" id="password" placeholder="Your password" />
-                                    <div className="validate" />
+                                <div className="row">
+                                    <div className="col-md-4 form-group mt-3 mt-md-0">
+                                        <input type="password" className="form-control" name="password" id="password" placeholder="Your password" />
+                                        <div className="validate" />
+                                    </div>
                                 </div>
                         }
-                        </div>
                         {
                             reset === 'true' ?
                                 <div className="text-center mt-3"><button type="submit">submit</button></div>
