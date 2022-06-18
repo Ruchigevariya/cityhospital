@@ -55,14 +55,12 @@ function Login_signup(props) {
                                     <div className="text-center mt-3"><button type="submit">Login</button></div>
                                     :
                                     <div className="text-center mt-3"><button type="submit">signup</button></div>
-
                         }
                         {
-
                             usertype === 'login' ?
-                                <div className="text-center mt-3">create a new account <button onClick={() => { setReset('false'); setUserType('signup') }}>signup</button></div>
+                                <div className="text-center mt-3 mb-3">create a new account <button onClick={() => { setReset('false'); setUserType('signup') }}>signup</button></div>
                                 :
-                                <div className="text-center mt-3">already have an account <button onClick={() => { setReset('false'); setUserType('login') }}>Login</button></div>
+                                <div className="text-center mt-3 mb-3">already have an account <button onClick={() => { setReset('false'); setUserType('login') }}>Login</button></div>
                         }
                         <button onClick={() => setReset('true')}>forgot password</button>
                     </div>

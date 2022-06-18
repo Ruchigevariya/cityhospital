@@ -19,7 +19,7 @@ function List({data , getid}) {
                                     {o.price}
                                 </CardSubtitle>
                                 <CardText>
-                                    {o.expiry}
+                                    {o.expiry    }
                                 </CardText>
                                 <Button onClick={()=>getid(o.id)}>Click</Button>
                             </CardBody>
