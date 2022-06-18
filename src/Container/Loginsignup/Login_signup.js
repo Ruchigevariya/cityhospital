@@ -40,7 +40,6 @@ function Login_signup(props) {
                         </div>
                         {
                             reset === 'true' ?
-
                                 null :
                                 <div className="row">
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
