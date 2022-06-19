@@ -1007,6 +1007,7 @@ section {
 .appointment .php-email-form .form-group {
   padding-bottom: 15px;
   margin: 0 auto;
+  color: red;
 }
 
 .appointment .php-email-form .validate {
