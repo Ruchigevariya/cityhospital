@@ -7,16 +7,16 @@ function Login_signup(props) {
     const [reset, setReset] = useState('false')
 
     let schema = yup.object().shape({
-        email: yup.string().required("please enter emaiil id.").email("please enter valid email."),
+        email: yup.string().required("please enter email id.").email("please enter valid email."),
         password: yup.string().required("please enter password.")
     });
 
     let signup = yup.object().shape({
         name: yup.string().required("please enter your name."),
-        email: yup.string().required("please enter emaiil id.").email("please enter valid email."),
+        email: yup.string().required("please enter email id.").email("please enter valid email."),
         password: yup.string().required("please enter password.")
     });
-    
+
     const formikObj = useFormik({
         initialValues: {
           email: '',
