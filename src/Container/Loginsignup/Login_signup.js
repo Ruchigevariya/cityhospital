@@ -6,23 +6,41 @@ function Login_signup(props) {
     const [usertype, setUserType] = useState('login')
     const [reset, setReset] = useState('false')
 
-    let schema = yup.object().shape({
-        email: yup.string().required("please enter email id.").email("please enter valid email."),
-        password: yup.string().required("please enter password.")
-    });
+    let schemaObj,initVle;
+
+    if(usertype === 'login'){
+        schemaObj = {
+            email: yup.string().required("please enter email id.").email("please enter valid email."),
+            password: yup.string().required("please enter password.")
+        }
+        initVle = {
+            email: '',
+            password: '',
+        }
+    }else if(usertype === 'signup'){
+        schemaObj = {
+            name: yup.string().required("please enter name."),
+            email: yup.string().required("please enter email id.").email("please enter valid email."),
+            password: yup.string().required("please enter password.")
+        }
+        initVle = {
+            name:'',
+            email: '',
+            password: '',
+        }
+    }
+
+    let schema = yup.object().shape(schemaObj);
 
     const formikObj = useFormik({
-        initialValues: {
-          email: '',
-          password: '',
-        },
+        initialValues: initVle,
         validationSchema : schema,
         onSubmit: values => {
           alert(JSON.stringify(values, null, 2));
         },
     });
 
-    const {handleChange,errors,handleSubmit} = formikObj;
+    const {handleChange,errors,handleSubmit,handleBlur, touched} = formikObj;
     // console.log(errors);
 
     return (
@@ -40,7 +58,7 @@ function Login_signup(props) {
                         }
                     </div>
                     <Formik values={formikObj}>
-                        <Form className="php-email-form"  onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit} className="php-email-form">
                         {
                             reset === 'true' ?
                                 null :
@@ -49,16 +67,16 @@ function Login_signup(props) {
                                     :
                                     <div className="row">
                                         <div className="text-center col-md-4 form-group">
-                                            <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                            <div className="validate" />
+                                            <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" onChange={handleChange} onBlur={handleBlur}/>
+                                            <p>{errors.name && touched.name ? errors.name : ''}</p>
                                         </div>
                                     </div>
                         }
 
                         <div className="row">
                             <div className="col-md-4 form-group mt-3 mt-md-0">
-                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" onChange={handleChange}/>
-                                <p>{errors.email}</p>
+                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" onChange={handleChange} onBlur={handleBlur}/>
+                                <p>{errors.email && touched.errors ? errors.email : ''}</p>
 
                             </div>
                         </div>
@@ -67,8 +85,8 @@ function Login_signup(props) {
                                 null :
                                 <div className="row">
                                     <div className="col-md-4 form-group mt-3 mt-md-0">
-                                        <input type="password" className="form-control" name="password" id="password" placeholder="Your password" onChange={handleChange}/>
-                                    <p>{errors.password}</p>
+                                        <input type="password" className="form-control" name="password" id="password" placeholder="Your password" onChange={handleChange} onBlur={handleBlur}/>
+                                    <p>{errors.password && touched.password ? errors.password : ''}</p>
                                     </div>
                                 </div>
                         }
