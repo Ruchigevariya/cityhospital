@@ -11,12 +11,6 @@ function Login_signup(props) {
         password: yup.string().required("please enter password.")
     });
 
-    let signup = yup.object().shape({
-        name: yup.string().required("please enter your name."),
-        email: yup.string().required("please enter email id.").email("please enter valid email."),
-        password: yup.string().required("please enter password.")
-    });
-
     const formikObj = useFormik({
         initialValues: {
           email: '',
