@@ -29,6 +29,14 @@ function Login_signup(props) {
             password: '',
         }
     }
+    // else if(reset === 'true'){
+    //     schemaObj = {
+    //         email: yup.string().required("please enter email id.").email("please enter valid email."),
+    //     }
+    //     initVle = {
+    //         email: '',
+    //     }
+    // }
 
     let schema = yup.object().shape(schemaObj);
 
@@ -40,7 +48,7 @@ function Login_signup(props) {
         },
     });
 
-    const {handleChange,errors,handleSubmit,handleBlur, touched} = formikObj;
+    const {handleChange,errors,handleSubmit,handleBlur,touched} = formikObj;
     // console.log(errors);
 
     return (
@@ -76,7 +84,7 @@ function Login_signup(props) {
                         <div className="row">
                             <div className="col-md-4 form-group mt-3 mt-md-0">
                                 <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" onChange={handleChange} onBlur={handleBlur}/>
-                                <p>{errors.email && touched.errors ? errors.email : ''}</p>
+                                <p>{errors.email && touched.email ? errors.email : ''}</p>
 
                             </div>
                         </div>

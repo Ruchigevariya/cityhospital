@@ -1072,7 +1072,8 @@ section {
 }
 
 .appointment .php-email-form input:focus, .appointment .php-email-form textarea:focus, .appointment .php-email-form select:focus {
-  border-color: #FF6337;
+  /* border-color: #FF6337; */
+  box-shadow: 0px 0px 20px 0px #298ce5;
 }
 
 .appointment .php-email-form input, .appointment .php-email-form select {
