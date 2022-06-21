@@ -6,14 +6,21 @@ function Login_signup(props) {
     const [usertype, setUserType] = useState('login')
     const [reset, setReset] = useState('false')
 
-    let schemaObj,initVle;
+    let schemaObj,initVal;
 
-    if(usertype === 'login'){
+    if(reset === 'true'){
+        schemaObj = {
+            email: yup.string().required("please enter email id.").email("please enter valid email."),
+        }
+        initVal = {
+            email: '',
+        }
+    }else if(usertype === 'login'){
         schemaObj = {
             email: yup.string().required("please enter email id.").email("please enter valid email."),
             password: yup.string().required("please enter password.")
         }
-        initVle = {
+        initVal = {
             email: '',
             password: '',
         }
@@ -23,29 +30,22 @@ function Login_signup(props) {
             email: yup.string().required("please enter email id.").email("please enter valid email."),
             password: yup.string().required("please enter password.")
         }
-        initVle = {
+        initVal = {
             name:'',
             email: '',
             password: '',
         }
     }
-    // else if(reset === 'true'){
-    //     schemaObj = {
-    //         email: yup.string().required("please enter email id.").email("please enter valid email."),
-    //     }
-    //     initVle = {
-    //         email: '',
-    //     }
-    // }
 
     let schema = yup.object().shape(schemaObj);
-
+    
     const formikObj = useFormik({
-        initialValues: initVle,
+        initialValues: initVal,
         validationSchema : schema,
         onSubmit: values => {
           alert(JSON.stringify(values, null, 2));
         },
+        enableReinitialize : true
     });
 
     const {handleChange,errors,handleSubmit,handleBlur,touched} = formikObj;
@@ -110,11 +110,11 @@ function Login_signup(props) {
                         }
                         {   
                             usertype === 'login' ?
-                                <div className="text-center mt-3 mb-3">create a new account <button onClick={() => { setReset('false'); setUserType('signup') }}>signup</button></div>
+                                <div className="text-center mt-3 mb-3">create a new account <a onClick={() => { setReset('false'); setUserType('signup') }}>signup</a></div>
                                 :
-                                <div className="text-center mt-3 mb-3">already have an account <button onClick={() => { setReset('false'); setUserType('login') }}>Login</button></div>
+                                <div className="text-center mt-3 mb-3">already have an account <a onClick={() => { setReset('false'); setUserType('login') }}>Login</a></div>
                         }
-                        <button onClick={() => setReset('true')}>forgot password</button>
+                        <a onClick={() => setReset('true')}>forgot password</a>
                         </Form>
                     </Formik>
                 </div>
