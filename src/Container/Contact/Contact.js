@@ -82,7 +82,7 @@ function Contact(props) {
                                         <p>{errors.message && touched.message ? errors.message : ''}</p>
                                     </div>
                                     <div className="my-3">
-                                        <div className="loading">Loading</div>
+                                        <div className="loading">Loading</div>  
                                         <div className="error-message" />
                                         <div className="sent-message">Your message has been sent. Thank you!</div>
                                     </div>

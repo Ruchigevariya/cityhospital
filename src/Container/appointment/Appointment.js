@@ -8,9 +8,9 @@ function Appointment(props) {
     let schema = yup.object().shape({
         name: yup.string().required("please enter your name."),
         email: yup.string().required("please enter email id").email("please enter valid email id."),
-        phone: yup.string().required("please enter your name."),
-        date: yup.string().required("please enter your name."),
-        department: yup.string().required("please enter your name."),
+        phone: yup.string().required("please enter your phone number."),
+        date: yup.string().required("please enter date."),
+        department: yup.string().required("please select department."),
     });
 
     const formikObj = useFormik({
@@ -51,7 +51,7 @@ function Appointment(props) {
                                     <p>{errors.email && touched.email ? errors.email : ''}</p>
                                 </div>
                                 <div className="col-md-4 form-group mt-3 mt-md-0">
-                                    <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" onChange={handleChange} onBlur={handleBlur}/>
+                                    <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" maxlength={10} onChange={handleChange} onBlur={handleBlur}/>
                                     <p>{errors.phone && touched.phone ? errors.phone : ''}</p>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ function Appointment(props) {
                                         <option value="Department 2">Department 2</option>
                                         <option value="Department 3">Department 3</option>
                                     </select>
-                                    <p>{errors.department && touched.department ? touched.department : ''}</p>
+                                    <p>{errors.department && touched.department ? errors.department : ''}</p>
                                 </div>
                             </div>
                             <div className="form-group mt-3">
