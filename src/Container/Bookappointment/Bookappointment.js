@@ -29,7 +29,7 @@ function Bookappointment(props) {
 
     return (
         <div>
-             <main id="main">
+            <main id="main">
             <section id="appointment" className="appointment">
                 <div className="container">
                     <div className="section-title">
