@@ -8,10 +8,11 @@ import Department from './Container/Department/Department';
 import Docters from './Container/Docters/Docters';
 import Contact from './Container/Contact/Contact';
 import About from './Container/About/About';
-import Appointment from './Container/appointment/Appointment';
+import Bookappointment from './Container/appointment/Bookappointment';
 import Login_signup from './Container/Loginsignup/Login_signup';
 import Medicines from './Container/Medicines/Medicines';
 import Reference from './Container/Reference/Reference';
+import ListAppointment from './Container/appointment/ListAppointment';
 
 function App() {
   return (
@@ -23,10 +24,11 @@ function App() {
       <Route path={"/docters"} exact component={Docters}></Route>
       <Route path={"/about"} exact component={About}></Route>
       <Route path={"/contact"} exact component={Contact}></Route>
-      <Route path={"/appointment"} exact component={Appointment}></Route>
-      <Route path="/loginsignup" exact component={Login_signup}></Route>
+      <Route path={"/bookappointment"} exact component={Bookappointment}></Route>
+      <Route path={"/loginsignup"} exact component={Login_signup}></Route>
       <Route path={"/medicines"} exact component={Medicines}></Route>
       <Route path={"/reference"} exact component={Reference}></Route>
+      <Route path={"/listappointment"} exact component={ListAppointment}></Route>
 
     </Switch>
     <Footer/>

@@ -39,26 +39,11 @@ function Login_signup(props) {
 
     let schema = yup.object().shape(schemaObj);
     
-    const handleData = (values) =>{
-        // console.log(values);
-        let localData = JSON.parse(localStorage.getItem("user"))
-        // localData.push(values)
-        // localStorage.setItem("user",JSON.stringify(localData))
-
-        if(localData === null){
-            localStorage.setItem("user",JSON.stringify([values]))
-        }else{
-            localData.push(values);
-            localStorage.setItem("user",JSON.stringify(localData))
-        }
-    }
-
     const formikObj = useFormik({
         initialValues: initVal,
         validationSchema : schema,
         onSubmit: values => {
-        handleData(values)
-        //   alert(JSON.stringify(values, null, 2));
+          alert(JSON.stringify(values, null, 2));
         },
         enableReinitialize : true
     });
@@ -100,7 +85,6 @@ function Login_signup(props) {
                             <div className="col-md-4 form-group mt-3 mt-md-0">
                                 <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" onChange={handleChange} onBlur={handleBlur}/>
                                 <p>{errors.email && touched.email ? errors.email : ''}</p>
-
                             </div>
                         </div>
                         {
