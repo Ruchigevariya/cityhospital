@@ -1,36 +1,36 @@
-import React, { useState } from 'react';
-import * as yup from 'yup';
-import { Formik, Form, useFormik } from 'formik';
-import { NavLink } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import { Button, Card, CardBody, CardSubtitle, CardTitle } from 'reactstrap';
 
 function ListAppointment(props) {
+    const [data, setdata] = useState([]);
+    const history = useHistory();
 
-    let schema = yup.object().shape({
-        name: yup.string().required("please enter your name."),
-        email: yup.string().required("please enter email id").email("please enter valid email id."),
-        phone: yup.string().required("please enter your phone number."),
-        date: yup.string().required("please select date."),
-        department: yup.string().required("please select department."),
-        message: yup.string().required("please enter message."),
-    });
+    const getData = () => {
+        let localData = JSON.parse(localStorage.getItem("bookappointment"));
+        setdata(localData);
+    }
 
-    const formikObj = useFormik({
-        initialValues: {
-            name: '',
-            email: '',
-            phone: '',
-            date: '',
-            department: '',
-            message: '',
-        },
-        validationSchema: schema,
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        },
-    });
+    useEffect(() => {
+        getData();
+    },[])
 
-    const { handleChange, errors, handleSubmit, handleBlur, touched } = formikObj
+    const handleDelete = (id) => {
+        let localData = JSON.parse(localStorage.getItem("bookappointment"));
+
+        console.log(id);
+
+        let fData = localData.filter((l) => l.id !== id)
+
+        localStorage.setItem("bookappointment",JSON.stringify(fData));
+        getData()
+    }
+
+    const handleEdit = (id) => {
+        console.log(id);
+        history.push("/bookappointment", {id:id} )
+    }
+
     return (
         <div>
             <main id="main">
@@ -47,87 +47,37 @@ function ListAppointment(props) {
                                 </div>
                             </div>
                         </div>
-                        <Formik values={formikObj}>
-                            <Form onSubmit={handleSubmit} className="php-email-form">
-                                <div className="row">
-                                    <div className="col-md-4 form-group">
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            className="form-control"
-                                            id="name"
-                                            placeholder="Your Name"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        />
-                                        {errors.name && touched.name ? <p>{errors.name}</p> : ''}
-                                    </div>
-                                    <div className="col-md-4 form-group mt-3 mt-md-0">
-                                        <input
-                                            type="email"
-                                            className="form-control"
-                                            name="email"
-                                            id="email"
-                                            placeholder="Your Email"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        />
-                                        {errors.email && touched.email ? <p>{errors.email}</p> : ''}
-                                    </div>
-                                    <div className="col-md-4 form-group mt-3 mt-md-0">
-                                        <input
-                                            type="tel"
-                                            className="form-control"
-                                            name="phone" id="phone"
-                                            placeholder="Your Phone"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        />
-                                        {errors.phone && touched.phone ? <p>{errors.phone}</p> : ''}
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-4 form-group mt-3">
-                                        <input type="date"
-                                            name="date"
-                                            className="form-control datepicker"
-                                            id="date"
-                                            placeholder="Appointment Date"
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        />
-                                        {errors.date && touched.date ? <p>{errors.date}</p> : ''}
-                                    </div>
-                                    <div className="col-md-4 form-group mt-3">
-                                        <select name="department" id="department" className="form-select" onChange={handleChange} onBlur={handleBlur}>
-                                            <option value>Select Department</option>
-                                            <option value="Department 1">Department 1</option>
-                                            <option value="Department 2">Department 2</option>
-                                            <option value="Department 3">Department 3</option>
-                                        </select>
-                                        {errors.department && touched.department ? <p>{errors.department}</p> : ''}
-                                    </div>
-                                </div>
-                                <div className="form-group mt-3">
-                                    <textarea
-                                        className="form-control"
-                                        name="message"
-                                        rows={5}
-                                        placeholder="Message (Optional)"
-                                        defaultValue={""}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                    />
-                                    {errors.message && touched.message ? <p>{errors.message}</p> : ''}
-                                </div>
-                                <div className="mb-3">
-                                    <div className="loading">Loading</div>
-                                    <div className="error-message" />
-                                    <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-                                </div>
-                                <div className="text-center"><button type="submit">Make an Appointment</button></div>
-                            </Form>
-                        </Formik>
+                        <div>
+
+                            {
+                                data.map((d, i) => {
+                                    return (
+                                        <Card
+                                        >
+                                            <CardBody>
+                                                <CardTitle tag="h5">
+                                                    {d.name}
+                                                </CardTitle>
+                                                <CardSubtitle
+                                                    className="mb-2 text-muted"
+                                                    tag="h6"
+                                                >
+                                                    {d.date}
+                                                </CardSubtitle>
+                                                <Button  onClick={()=>handleEdit(d.id)}>
+                                                    Edit
+                                                </Button>
+                                                <Button onClick={()=>handleDelete(d.id)}>
+                                                    Delete
+                                                </Button>
+                                            </CardBody>
+                                        </Card>
+                                    )
+
+                                })
+                            }
+                        </div>
+
                     </div>
                 </section>
             </main>

@@ -18,7 +18,7 @@ function Bookappointment(props) {
         }
         console.log(data);
 
-        let localData = JSON.parse(localStorage.getItem("Bookappointment"));
+        let localData = JSON.parse(localStorage.getItem("bookappointment"));
 
         if(localData === null){
             localStorage.setItem("bookappointment",JSON.stringify([data]));
@@ -48,8 +48,8 @@ function Bookappointment(props) {
         },
         validationSchema: schema,
         onSubmit: values => {
-            history.push("/listappointment")
             handleInsert(values)
+            history.push("/listappointment")
             // alert(JSON.stringify(values, null, 2));
         },
     });
