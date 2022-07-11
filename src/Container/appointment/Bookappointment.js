@@ -7,6 +7,7 @@ function Bookappointment(props) {
     const [update, setUpdate] = useState(false)
 
     const history = useHistory();
+    
     useEffect(() => {
         console.log(props.location.state);
         let localData =JSON.parse( localStorage.getItem("bookappointment"))
@@ -88,7 +89,6 @@ function Bookappointment(props) {
             if(update){
                 handleUpdateData(values)
             }else{
-
                 handleInsert(values)
             }
             // alert(JSON.stringify(values, null, 2));
