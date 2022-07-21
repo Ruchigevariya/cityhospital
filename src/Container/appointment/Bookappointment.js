@@ -4,7 +4,6 @@ import { Formik, Form, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappointment(props) {
-    const [update, setUpdate] = useState(false)
     
     const history = useHistory();
 
