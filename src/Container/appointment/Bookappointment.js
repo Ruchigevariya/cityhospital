@@ -9,7 +9,7 @@ function Bookappointment(props) {
     const history = useHistory();
     
     useEffect(() => {
-        console.log(props.location.state);
+        console.log(props.location.state.id);
         let localData =JSON.parse( localStorage.getItem("bookappointment"))
         if (props.location.state && localData !== null) {
             let fData = localData.filter((l) => l.id === props.location.state.id)
