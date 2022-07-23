@@ -4,42 +4,7 @@ import { Formik, Form, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Bookappointment(props) {
-    const [update, setUpdate] = useState(false)
-
     const history = useHistory();
-
-    useEffect(() => {
-        console.log(props.location.state);
-        let localData =JSON.parse( localStorage.getItem("bookappointment"))
-        if (props.location.state && localData !== null) {
-            let fData = localData.filter((l) => l.id === props.location.state.id)
-            console.log(fData[0]);
-            formikObj.setValues(fData[0])
-            setUpdate(true)
-        }
-
-    }, [])
-
-    const handleUpdateData = (values)=>{
-        console.log(values);
-
-        let localData = JSON.parse(localStorage.getItem("bookappointment"));
-
-        let udata = localData.map((l,i) => {
-          if(l.id === values.id){
-            return values;
-          }else{
-            return l;
-          }  
-        })
-
-        localStorage.setItem("bookappointment",JSON.stringify(udata))
-
-        setUpdate(false);
-        formikObj.resetForm();
-        history.replace();
-        history.push("/listappointment")
-    }   
 
     let handleInsert = (values) => {
         console.log(values);
@@ -86,11 +51,7 @@ function Bookappointment(props) {
         },
         validationSchema: schema,
         onSubmit: values => {
-            if(update){
-                handleUpdateData(values)
-            }else{
                 handleInsert(values)
-            }
             // alert(JSON.stringify(values, null, 2));
         },
     });
@@ -198,12 +159,7 @@ function Bookappointment(props) {
                                     <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
                                 </div>
                                 <div className="text-center">
-                                    {
-                                        update ?
-                                            <button type="submit">update an Appointment</button>
-                                            : <button type="submit">Make an Appointment</button>
-                                    }
-
+                                    <button type="submit">Book an Appointment</button>
                                 </div>
                             </Form>
                         </Formik>
