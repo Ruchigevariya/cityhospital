@@ -12,10 +12,12 @@ import Appointment from './Container/appointment/Appointment';
 import Login_signup from './Container/Loginsignup/Login_signup';
 import Medicines from './Container/Medicines/Medicines';
 import Reference from './Container/Reference/Reference';
+import ToggleContext from './Context/ThemeContext';
 
 function App() {
   return (
     <div>
+    <ToggleContext>
     <Header />
     <Switch>
       <Route path={"/"}  exact component={Home}></Route>
@@ -27,9 +29,9 @@ function App() {
       <Route path="/loginsignup" exact component={Login_signup}></Route>
       <Route path={"/medicines"} exact component={Medicines}></Route>
       <Route path={"/reference"} exact component={Reference}></Route>
-
     </Switch>
     <Footer/>
+    </ToggleContext>
     </div>
   );
 }
