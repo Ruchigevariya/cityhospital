@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as yup from 'yup';
 import { Formik, Form, useFormik } from 'formik';
+import { themeContext } from '../../Context/ThemeContext';
 
 function Contact(props) {
+    const value =  useContext(themeContext)
+
 
     let schema = yup.object().shape({
         name: yup.string().required("please enter your name."),
@@ -29,7 +32,7 @@ function Contact(props) {
     return (
         <div>
             <main id="main">
-                <section id="contact" className="contact">
+                <section id="contact" className={`contact ${value.theme}`}>
                     <div className="container">
                         <div className="section-title">
                             <h2>Contact</h2>
@@ -41,7 +44,7 @@ function Contact(props) {
                     <div className="container">
                         <div className="row mt-5">
                             <div className="col-lg-4">
-                                <div className="info">
+                                <div className={`info ${value.theme}`}>
                                     <div className="address">
                                         <i className="bi bi-geo-alt" />
                                         <h4>Location:</h4>
@@ -61,7 +64,7 @@ function Contact(props) {
                             </div>
                             <div className="col-lg-8 mt-5 mt-lg-0">
                             <Formik values={formikObj}>
-                                <Form action method="post" role="form" onSubmit={handleSubmit} className="php-email-form">
+                                <Form action method="post" role="form" onSubmit={handleSubmit} className={`php-email-form ${value.theme}`}>
                                     <div className="row">
                                         <div className="col-md-6 form-group">
                                             <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" onChange={handleChange} onBlur={handleBlur}/>

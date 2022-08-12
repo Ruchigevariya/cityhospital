@@ -1784,6 +1784,9 @@ section {
   color: #fff !important;
 }
 
+.dark #footer{
+  background-color: #212121 !important;
+}
 /* .dark .departments .nav-link {
   color: #fff !important;
 } */
