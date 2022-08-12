@@ -17,7 +17,6 @@ function Header(props) {
                             <i className="bi bi-phone" /> +91 9988776655
                         </div>
                         <button onClick={() => value.toggle_theme(value.theme)}>Change Theme</button>
-
                         <div className="d-none d-lg-flex social-links align-items-center">
                             <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
                             <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
@@ -27,7 +26,7 @@ function Header(props) {
 
                     </div>
                 </div>
-                <header id="header" className="fixed-top">
+                <header id="header" className={`fixed-top ${value.theme}`}>
                     <div className="container d-flex align-items-center">
                         <div className="logo">
                             <NavLink to="/">Home</NavLink>

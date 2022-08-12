@@ -1767,3 +1767,19 @@ section {
   background-color: #212121 !important;
   color:#fff !important;
 }
+
+.dark .navbar a{
+  color:#fff !important;
+}
+
+/* .dark .contact-info i a{
+  color:#fff !important;
+} */
+
+.dark .navbar a:hover{
+  color: #FF6337 !important;
+}
+
+.dark .counts .count-box span {
+  color: #fff !important;
+}

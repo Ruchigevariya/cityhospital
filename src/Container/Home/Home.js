@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { themeContext } from '../../Context/ThemeContext';
 
 function Home(props) {
+    const value = useContext(themeContext);
+    console.log(value);
     return (
         <div>
             <section id="hero" className="d-flex align-items-center">
@@ -47,7 +50,7 @@ function Home(props) {
                         </div>
                     </div>
                 </section>
-                <section id="services" className="services">
+                <section id="services" className={`services ${value.theme}`}>
                     <div className="container">
                         <div className="section-title">
                             <h2>Our Facilities</h2>
@@ -101,7 +104,7 @@ function Home(props) {
                         </div>
                     </div>
                 </section>
-                <section id="testimonials" className="testimonials">
+                <section id="testimonials" className={`testimonial ${value.theme}`}>
                     <div className="container">
                         <div className="section-title"><h2>Reviews</h2></div>
                         <div className="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay={100}>
@@ -192,7 +195,7 @@ function Home(props) {
                         </div>
                     </div>
                 </section>
-                <section id="gallery" className="gallery">
+                <section id="gallery" className={`gallery ${value.theme}`}>
                     <div className="container">
                         <div className="section-title">
                             <h2>Gallery</h2>
