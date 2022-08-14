@@ -4,6 +4,7 @@ import { themeContext } from '../../Context/ThemeContext';
 function Home(props) {
     const value = useContext(themeContext);
     console.log(value);
+    
     return (
         <div>
             <section id="hero" className="d-flex align-items-center">
@@ -16,7 +17,7 @@ function Home(props) {
             <main id="main">
                 <section id="why-us" className="why-us">
                 </section>
-                <section id="counts" className="counts">
+                <section id="counts" className={`counts ${value.theme}`}>
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 col-md-6">
