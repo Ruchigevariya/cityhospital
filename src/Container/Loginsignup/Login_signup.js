@@ -39,7 +39,7 @@ function Login_signup(props) {
 
     let schema = yup.object().shape(schemaObj);
 
-    let dispatch = useDispatch()
+    let dispatch = useDispatch
     
     const handleData = (values) =>{
         // console.log(values);
