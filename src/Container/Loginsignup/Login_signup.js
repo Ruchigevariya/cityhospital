@@ -39,18 +39,22 @@ function Login_signup(props) {
 
     let schema = yup.object().shape(schemaObj);
 
+    let dispatch = useDispatch()
+    
     const handleData = (values) =>{
         // console.log(values);
         let localData = JSON.parse(localStorage.getItem("user"))
         // localData.push(values)
         // localStorage.setItem("user",JSON.stringify(localData))
 
-        if(localData === null){
-            localStorage.setItem("user",JSON.stringify([values]))
-        }else{
-            localData.push(values);
-            localStorage.setItem("user",JSON.stringify(localData))
-        }
+        // if(localData === null){
+        //     localStorage.setItem("user",JSON.stringify([values]))
+        // }else{
+        //     localData.push(values);
+        //     localStorage.setItem("user",JSON.stringify(localData))
+        // }
+        
+        dispatch(signUp)
     }
     
     const handleLogin = () => {
