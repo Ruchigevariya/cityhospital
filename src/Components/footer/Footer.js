@@ -8,7 +8,7 @@ function Footer(props) {
 
     return (
         <div>
-            <footer id={`footer ${value.theme}`}>
+            <footer id="footer" className={`footer ${value.theme}`}>
                 <div className="container d-md-flex py-4">
                     <div className="me-md-auto text-center text-md-start">
                         <div>
