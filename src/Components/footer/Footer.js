@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { themeContext } from '../../Context/ThemeContext';
 
 function Footer(props) {
+    const value = useContext(themeContext)
+    console.log(value);
+
     return (
         <div>
-            <footer id="footer">
+            <footer id="footer" className={`footer ${value.theme}`}>
                 <div className="container d-md-flex py-4">
                     <div className="me-md-auto text-center text-md-start">
                         <div>

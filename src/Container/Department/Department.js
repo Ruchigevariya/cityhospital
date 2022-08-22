@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { themeContext } from '../../Context/ThemeContext';
 
 function Department(props) {
+    const value = useContext(themeContext)
     return (
         <div>
             <main id="main">
-                <section id="departments" className="departments">
+                <section id="departments" className={`departments ${value.theme}`}>
                     <div className="container">
                         <div className="section-title">
                             <h2>Departments</h2>
