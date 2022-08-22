@@ -1,4 +1,4 @@
 
 export const signupApi = () => {
-    // fetch api
+    // firebase integration
 }
