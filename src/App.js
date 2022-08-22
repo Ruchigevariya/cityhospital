@@ -15,12 +15,15 @@ import Reference from './Container/Reference/Reference';
 import ListAppointment from './Container/appointment/ListAppointment';
 import PublicRoute from './Route/PublicRoute';
 import PrivateRoute from './Route/PrivateRoute';
+import { Provider } from 'react-redux';
+import { store } from './redux/Store';
 
 function App() {
   return (
     <div>
     <Header />
     <Switch>
+    <Provider store={store}>
       <PublicRoute path={"/"}  exact component={Home} />
       <PublicRoute path={"/department"} exact component={Department} />
       <PublicRoute path={"/docters"} exact component={Docters} />
@@ -31,7 +34,7 @@ function App() {
       <PublicRoute path={"/reference"} exact component={Reference} />
       <PrivateRoute path={"/bookappointment"} exact component={Bookappointment} />
       <PrivateRoute path={"/listappointment"} exact component={ListAppointment} />
-
+    </Provider>
     </Switch>
     <Footer/>
     </div>
