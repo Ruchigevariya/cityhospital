@@ -15,25 +15,28 @@ import Reference from './Container/Reference/Reference';
 import ListAppointment from './Container/appointment/ListAppointment';
 import PublicRoute from './Route/PublicRoute';
 import PrivateRoute from './Route/PrivateRoute';
+import ToggleContext from './Context/ThemeContext';
 
 function App() {
   return (
     <div>
-    <Header />
-    <Switch>
-      <PublicRoute path={"/"}  exact component={Home} />
-      <PublicRoute path={"/department"} exact component={Department} />
-      <PublicRoute path={"/docters"} exact component={Docters} />
-      <PublicRoute path={"/about"} exact component={About} />
-      <PublicRoute path={"/contact"} exact component={Contact} />
-      <PublicRoute path={"/loginsignup"} exact  restricted={true} component={Login_signup} />
-      <PublicRoute path={"/medicines"} exact component={Medicines} />
-      <PublicRoute path={"/reference"} exact component={Reference} />
-      <PrivateRoute path={"/bookappointment"} exact component={Bookappointment} />
-      <PrivateRoute path={"/listappointment"} exact component={ListAppointment} />
+      <ToggleContext>
+        <Header />
+        <Switch>
+          <PublicRoute path={"/"} exact component={Home} />
+          <PublicRoute path={"/department"} exact component={Department} />
+          <PublicRoute path={"/docters"} exact component={Docters} />
+          <PublicRoute path={"/about"} exact component={About} />
+          <PublicRoute path={"/contact"} exact component={Contact} />
+          <PublicRoute path={"/loginsignup"} exact restricted={true} component={Login_signup} />
+          <PublicRoute path={"/medicines"} exact component={Medicines} />
+          <PublicRoute path={"/reference"} exact component={Reference} />
+          <PrivateRoute path={"/bookappointment"} exact component={Bookappointment} />
+          <PrivateRoute path={"/listappointment"} exact component={ListAppointment} />
+        </Switch>
+        <Footer />
+      </ToggleContext>
 
-    </Switch>
-    <Footer/>
     </div>
   );
 }
