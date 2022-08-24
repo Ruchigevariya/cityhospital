@@ -31,7 +31,7 @@ export const signupApi = (data) => {
                 if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
                     reject({ payload: "email already registered" });
                 } else {
-                    reject({ payload: errorMessage });
+                    reject({ payload: errorCode });
                 }
             });
     })
