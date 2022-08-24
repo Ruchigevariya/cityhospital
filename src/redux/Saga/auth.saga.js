@@ -9,6 +9,7 @@ function* signUp(action) {
       console.log(user);
     //   yield put({type: "USER_FETCH_SUCCEEDED", user: user});
    } catch (e) {
+    console.log(e);
     //   yield put({type: "USER_FETCH_FAILED", message: e.message});
    }
 }

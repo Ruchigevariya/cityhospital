@@ -14,7 +14,7 @@ export const signupApi = (data) => {
                 onAuthStateChanged(auth, (user) => {
                     sendEmailVerification(auth.currentUser)
                         .then(() => {
-                            resolve({ payload: "please enter email." });
+                            resolve({ payload: "please check email." });
                         })
                         .catch((e) => {
                             reject({ payload: e });
