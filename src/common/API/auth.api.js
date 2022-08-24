@@ -14,12 +14,12 @@ export const signupApi = (data) => {
                 onAuthStateChanged(auth, (user) => {
                     sendEmailVerification(auth.currentUser)
                         .then(() => {
-                            resolve({payload:"please enter email."});
+                            resolve({ payload: "please enter email." });
                         })
                         .catch((e) => {
-                            reject({payload:e});
+                            reject({ payload: e });
                         })
-                  
+
                 });
             })
             .catch((error) => {
@@ -29,10 +29,10 @@ export const signupApi = (data) => {
                 console.log(error);
 
                 if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
-                    reject({payload:"email already registered"});
-            } else {
-                reject({payload:errorMessage});
-            }
+                    reject({ payload: "email already registered" });
+                } else {
+                    reject({ payload: errorMessage });
+                }
             });
     })
 }
