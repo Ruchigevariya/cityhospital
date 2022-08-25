@@ -24,10 +24,10 @@ function App() {
   return (
     <div>
       <SnackbarProvider maxSnack={3}>
-        <ToggleContext>
-          <Header />
-          <Switch>
-            <Provider store={store}>
+        <Provider store={store}>
+          <ToggleContext>
+            <Header />
+            <Switch>
               <PublicRoute path={"/"} exact component={Home} />
               <PublicRoute path={"/department"} exact component={Department} />
               <PublicRoute path={"/docters"} exact component={Docters} />
@@ -38,10 +38,10 @@ function App() {
               <PublicRoute path={"/reference"} exact component={Reference} />
               <PrivateRoute path={"/bookappointment"} exact component={Bookappointment} />
               <PrivateRoute path={"/listappointment"} exact component={ListAppointment} />
-            </Provider>
-          </Switch>
-          <Footer />
-        </ToggleContext>
+            </Switch>
+            <Footer />
+          </ToggleContext>
+        </Provider>
       </SnackbarProvider>
     </div>
   );
