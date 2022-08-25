@@ -18,28 +18,31 @@ import PrivateRoute from './Route/PrivateRoute';
 import { Provider } from 'react-redux';
 import { store } from './redux/Store';
 import ToggleContext from './Context/ThemeContext';
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   return (
     <div>
-      <ToggleContext>
-        <Header />
-        <Switch>
-          <Provider store={store}>
-            <PublicRoute path={"/"} exact component={Home} />
-            <PublicRoute path={"/department"} exact component={Department} />
-            <PublicRoute path={"/docters"} exact component={Docters} />
-            <PublicRoute path={"/about"} exact component={About} />
-            <PublicRoute path={"/contact"} exact component={Contact} />
-            <PublicRoute path={"/loginsignup"} exact restricted={true} component={Login_signup} />
-            <PublicRoute path={"/medicines"} exact component={Medicines} />
-            <PublicRoute path={"/reference"} exact component={Reference} />
-            <PrivateRoute path={"/bookappointment"} exact component={Bookappointment} />
-            <PrivateRoute path={"/listappointment"} exact component={ListAppointment} />
-          </Provider>
-        </Switch>
-        <Footer />
-      </ToggleContext>
+      <SnackbarProvider maxSnack={3}>
+        <ToggleContext>
+          <Header />
+          <Switch>
+            <Provider store={store}>
+              <PublicRoute path={"/"} exact component={Home} />
+              <PublicRoute path={"/department"} exact component={Department} />
+              <PublicRoute path={"/docters"} exact component={Docters} />
+              <PublicRoute path={"/about"} exact component={About} />
+              <PublicRoute path={"/contact"} exact component={Contact} />
+              <PublicRoute path={"/loginsignup"} exact restricted={true} component={Login_signup} />
+              <PublicRoute path={"/medicines"} exact component={Medicines} />
+              <PublicRoute path={"/reference"} exact component={Reference} />
+              <PrivateRoute path={"/bookappointment"} exact component={Bookappointment} />
+              <PrivateRoute path={"/listappointment"} exact component={ListAppointment} />
+            </Provider>
+          </Switch>
+          <Footer />
+        </ToggleContext>
+      </SnackbarProvider>
     </div>
   );
 }

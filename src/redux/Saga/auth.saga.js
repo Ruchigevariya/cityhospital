@@ -17,6 +17,7 @@ function* signUp(action) {
 function* signIn(action) {
   try{
     const user = yield call(signinApi, action.payload)
+    
     console.log(user);
   } catch (e) {
     console.log(e);
