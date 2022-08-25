@@ -5,24 +5,26 @@ import { setAlert } from '../action/alert.action';
 import * as ActionTypes from '../ActionTypes';
 
 function* signUp(action) {
-   try {
-      const user = yield call(signupApi, action.payload);
-      console.log(user);
+  try {
+    const user = yield call(signupApi, action.payload);
+    yield put(setAlert({ text: user.payload, color: "success" }))
+    console.log(user);
     //   yield put({type: "USER_FETCH_SUCCEEDED", user: user});
-   } catch (e) {
+  } catch (e) {
+    yield put(setAlert({ text: e.payload, color: "error" }))
     console.log(e);
     //   yield put({type: "USER_FETCH_FAILED", message: e.message});
-   }
+  }
 }
 
 function* signIn(action) {
-  try{
+  try {
     const user = yield call(signinApi, action.payload)
-    yield put(setAlert({text : user.payload , color : "success"}))
+    yield put(setAlert({ text: user.payload, color: "success" }))
     console.log(user);
   } catch (e) {
     console.log(e);
-    yield put(setAlert({text : e.payload , color : "error"}))
+    yield put(setAlert({ text: e.payload, color: "error" }))
   }
 }
 function* watchSignUp() {
@@ -30,12 +32,12 @@ function* watchSignUp() {
 }
 
 function* watchSignIn() {
-  yield takeEvery(ActionTypes.SIGNIN_USER,signIn)
+  yield takeEvery(ActionTypes.SIGNIN_USER, signIn)
 }
 
-export function* authSaga(){
-    yield all([              // yield = generate karve
-        watchSignUp(),
-        watchSignIn()
-    ])
+export function* authSaga() {
+  yield all([              // yield = generate karve
+    watchSignUp(),
+    watchSignIn()
+  ])
 }
