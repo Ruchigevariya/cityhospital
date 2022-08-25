@@ -8,19 +8,18 @@ const initVal = {
 export const alertReducer = (state = initVal, action) => {
     switch (action.type) {
         case ActionTypes.SET_ALERT:
-            return{
+            return {
                 ...state,
                 text: action.payload.text,
                 color: action.payload.color
             }
-
         case ActionTypes.RESET_ALERT:
-            return{
+            return {
                 ...state,
                 text: '',
                 color: ''
-            }    
+            }
         default:
-            return state;    
+            return state
     }
 }
