@@ -1,11 +1,16 @@
+import { Button } from '@mui/material';
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../Context/ThemeContext';
+import { signOutAction } from '../../redux/action/auth.action';
 import Alert from '../Alert/Alert';
 
 function Header(props) {
     const value = useContext(themeContext);
     console.log(value);
+
+    const dispatch = useDispatch()
 
     return (
 
@@ -61,6 +66,8 @@ function Header(props) {
                         <NavLink className="appointment-btn scrollto" to={"appointment"}><span className="d-none d-md-inline">Make an</span>
                             Appointment</NavLink>
                         <NavLink className="appointment-btn scrollto" to={"/loginsignup"}>Login/ Signup</NavLink>   
+                        <NavLink className="appointment-btn scrollto" to={"/"}><span className="d-none d-md-inline" onClick={() => {dispatch(signOutAction()) }}>Logout</span></NavLink>   
+                        
                     </div>
                 </header>
             </div>
