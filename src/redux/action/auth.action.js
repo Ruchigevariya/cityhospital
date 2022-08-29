@@ -8,6 +8,10 @@ export const signInAction = (data) => (dispatch) => {
     dispatch({type: ActionTypes.SIGNIN_USER, payload: data})
 }
 
+export const signedInAction = (data) => (dispatch) => {
+    dispatch({type: ActionTypes.SIGNEDIN_USER, payload: data})
+}
+
 export const signOutAction = () => (dispatch) => {
     dispatch({type: ActionTypes.SIGNOUT})
 }

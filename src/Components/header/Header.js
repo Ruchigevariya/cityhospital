@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useContext } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeContext } from '../../Context/ThemeContext';
 import { signOutAction } from '../../redux/action/auth.action';
@@ -11,6 +11,8 @@ function Header(props) {
     console.log(value);
 
     const dispatch = useDispatch()
+
+    const auth = useSelector(state => state.auth)
 
     return (
 
@@ -65,9 +67,19 @@ function Header(props) {
                         </nav>
                         <NavLink className="appointment-btn scrollto" to={"appointment"}><span className="d-none d-md-inline">Make an</span>
                             Appointment</NavLink>
-                        <NavLink className="appointment-btn scrollto" to={"/loginsignup"}>Login/ Signup</NavLink>   
-                        <NavLink className="appointment-btn scrollto" to={"/"}><span className="d-none d-md-inline" onClick={() => {dispatch(signOutAction()) }}>Logout</span></NavLink>   
-                        
+                        {
+                            auth.user === null ?
+                                <NavLink className="appointment-btn scrollto" to={"/loginsignup"}>
+                                    <span className="d-none d-md-inline">
+                                        Login/ Signup
+                                    </span>
+                                </NavLink>
+                                :
+                                <NavLink className="appointment-btn scrollto" to={"/"}>
+                                    <span className="d-none d-md-inline" onClick={() => { dispatch(signOutAction()) }}>Logout</span>
+                                </NavLink>
+                        }
+
                     </div>
                 </header>
             </div>
