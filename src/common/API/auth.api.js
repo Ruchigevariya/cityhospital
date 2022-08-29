@@ -73,11 +73,10 @@ export const SignOutApi = () => {
     return new Promise((resolve, reject) => {
         signOut(auth)
         .then(() => {
-            resolve({ payload: "SignOut Successful"})
+            resolve({ payload: "LogOut Successful"})
         })
         .catch((error) => {
-            resolve({ payload: "error"})
-            
+            reject({ payload: "something went wrong"}) 
         })
     })
 }
