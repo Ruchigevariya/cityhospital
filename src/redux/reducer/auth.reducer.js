@@ -15,7 +15,7 @@ export const authReducer = (state = initVal, action) => {
                 user: action.payload,
                 error: ''
             }
-        case ActionTypes.SIGNOUT:
+        case ActionTypes.SIGNOUT_USER:
             return{
                 ...state,
                 isLoading: false,

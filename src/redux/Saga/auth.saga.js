@@ -53,7 +53,7 @@ function* watchSignIn() {
 }
 
 function* watchSignOut() {
-  yield takeEvery(ActionTypes.SIGNOUT, signOut)
+  yield takeEvery(ActionTypes.SIGNOUT_USER, signOut)
 }
 
 export function* authSaga() {

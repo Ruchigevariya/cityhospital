@@ -13,5 +13,5 @@ export const signedInAction = (data) => (dispatch) => {
 }
 
 export const signOutAction = () => (dispatch) => {
-    dispatch({type: ActionTypes.SIGNOUT})
+    dispatch({type: ActionTypes.SIGNOUT_USER})
 }
