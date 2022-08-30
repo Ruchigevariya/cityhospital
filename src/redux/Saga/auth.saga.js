@@ -35,7 +35,7 @@ function* signIn(action) {
 
 function* signOut(action) {
   try{
-    const user = yield call(SignOutApi, action.payload)
+    const user = yield call(SignOutApi)
     yield put(setAlert({ text: user.payload, color: "success" }))
     console.log(user);
   } catch (e) {
