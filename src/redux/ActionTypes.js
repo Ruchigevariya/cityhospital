@@ -9,3 +9,4 @@ export const SET_ALERT = 'SET_ALERT';
 export const RESET_ALERT = 'RESET_ALERT';
 
 export const SIGNOUT_USER = 'SIGNOUT_USER'
+export const SIGNEDOUT_USER = 'SIGNEDOUT_USER'
