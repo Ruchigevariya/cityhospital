@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import { Formik, Form ,useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { fogotPasswordAction, signInAction, signUpAction } from '../../redux/action/auth.action';
+import { fogotPasswordAction, GoogleSignInAction, signInAction, signUpAction } from '../../redux/action/auth.action';
 
 function Login_signup(props) {
     const [usertype, setUserType] = useState('login')
@@ -66,6 +66,9 @@ function Login_signup(props) {
         dispatch(signInAction(values))
     }
     
+    const handlegoogleSignIn = () => {
+        dispatch(GoogleSignInAction())
+    }
     const formikObj = useFormik({
         initialValues: initVal,
         validationSchema : schema,
@@ -145,7 +148,7 @@ function Login_signup(props) {
                                 usertype === 'login' ?
                                     <div className='row mt-3'>
                                         <p>OR</p>
-                                        <div className="text-center mt-3"><button type="submit">SignIn google</button></div>
+                                        <div className="text-center mt-3"><button type="submit" onClick={() => {handlegoogleSignIn()}}>SignIn google</button></div>
                                     </div>
                                     :
                                     null    
