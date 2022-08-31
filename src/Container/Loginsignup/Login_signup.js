@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as yup from 'yup';
 import { Formik, Form ,useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { signInAction, signUpAction } from '../../redux/action/auth.action';
+import { fogotPasswordAction, signInAction, signUpAction } from '../../redux/action/auth.action';
 
 function Login_signup(props) {
     const [usertype, setUserType] = useState('login')
@@ -57,6 +57,7 @@ function Login_signup(props) {
         // }
         
         dispatch(signUpAction(values))
+        dispatch(fogotPasswordAction(values))
     }
     
     const handleLogin = (values) => {
@@ -136,7 +137,18 @@ function Login_signup(props) {
                                     <div className="text-center mt-3"><button type="submit">Login</button></div>
                                     :
                                     <div className="text-center mt-3"><button type="submit">signup</button></div>
-
+                        }
+                        {
+                            reset === 'true' ?
+                                null 
+                                :
+                                usertype === 'login' ?
+                                    <div className='row mt-3'>
+                                        <p>OR</p>
+                                        <div className="text-center mt-3"><button type="submit">SignIn google</button></div>
+                                    </div>
+                                    :
+                                    null    
                         }
                         {   
                             usertype === 'login' ?

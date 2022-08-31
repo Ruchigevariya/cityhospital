@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 
 export const signupApi = (data) => {
@@ -46,21 +46,21 @@ export const signinApi = (data) => {
                 const user = userCredential.user;
                 console.log(user);
 
-                if(user.emailVerified){
-                    resolve({payload: user});
-                }else{
-                    reject({payload: "First verify email."});
+                if (user.emailVerified) {
+                    resolve({ payload: user });
+                } else {
+                    reject({ payload: "First verify email." });
                 }
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
 
-                  if (errorCode.localeCompare("auth/user-not-found") === 0) {
+                if (errorCode.localeCompare("auth/user-not-found") === 0) {
                     reject({ payload: "email or password is wrong" });
-                } else if (errorCode.localeCompare("auth/wrong-password") === 0){
+                } else if (errorCode.localeCompare("auth/wrong-password") === 0) {
                     reject({ payload: "password is wrong" });
-                } else{
+                } else {
                     reject({ payload: errorCode });
                 }
             });
@@ -72,11 +72,25 @@ export const SignOutApi = () => {
 
     return new Promise((resolve, reject) => {
         signOut(auth)
-        .then(() => {
-            resolve({ payload: "LogOut Successful"})
-        })
-        .catch((error) => {
-            reject({ payload: error.code}) 
-        })
+            .then(() => {
+                resolve({ payload: "LogOut Successful" })
+            })
+            .catch((error) => {
+                reject({ payload: error.code })
+            })
+    })
+}
+
+export const forgotPasswordApi = (data) => {
+    console.log("forgotPasswordApi", data);
+
+    return new Promise((resolve, reject) => {
+        sendPasswordResetEmail(auth, data.email)
+            .then(() => {
+                resolve({ payload: "please check your email." });
+            })
+            .catch((error) => {
+                reject({ payload: error });
+            })
     })
 }

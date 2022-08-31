@@ -1,5 +1,5 @@
 import { call, put, takeEvery, all } from 'redux-saga/effects'
-import { signinApi, SignOutApi, signupApi } from '../../common/API/auth.api';
+import { forgotPasswordApi, signinApi, SignOutApi, signupApi } from '../../common/API/auth.api';
 import { history } from '../../history';
 import { setAlert } from '../action/alert.action';
 import { signedInAction, signedOutAction } from '../action/auth.action';
@@ -47,6 +47,17 @@ function* signOut(action) {
   }
 }
 
+function* fogotPassword(action){
+  try{
+    const user = yield call(forgotPasswordApi, action.payload)
+    yield put(setAlert({ text: user.payload, color: "success" }))
+    console.log(user);
+  } catch (e) {
+    yield put(setAlert({ text: e.payload, color: "error" }))
+    console.log(e);
+  }
+}
+
 function* watchSignUp() {
   yield takeEvery(ActionTypes.SIGNUP_USER, signUp);
 }
@@ -59,10 +70,15 @@ function* watchSignOut() {
   yield takeEvery(ActionTypes.SIGNOUT_USER, signOut)
 }
 
+function* watchForgotPassword() {
+  yield takeEvery(ActionTypes.FORGOTPASSWORDACTION, fogotPassword)
+}
+
 export function* authSaga() {
   yield all([              // yield = generate karve
     watchSignUp(),
     watchSignIn(),
-    watchSignOut()
+    watchSignOut(),
+    watchForgotPassword()
   ])
 }
