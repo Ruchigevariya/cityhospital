@@ -74,7 +74,7 @@ function* watchSignOut() {
 }
 
 function* watchForgotPassword() {
-  yield takeEvery(ActionTypes.FORGOTPASSWORDACTION, fogotPassword)
+  yield takeEvery(ActionTypes.FORGOTPASSWORD_USER, fogotPassword)
 }
 
 export function* authSaga() {
