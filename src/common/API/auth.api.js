@@ -90,7 +90,9 @@ export const forgotPasswordApi = (data) => {
                 resolve({ payload: "please check your email reset password." });
             })
             .catch((error) => {
-                reject({ payload: error });
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                reject({ payload: errorCode });
             })
     })
 }
