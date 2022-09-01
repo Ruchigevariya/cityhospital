@@ -87,10 +87,12 @@ export const forgotPasswordApi = (data) => {
     return new Promise((resolve, reject) => {
         sendPasswordResetEmail(auth, data.email)
             .then(() => {
-                resolve({ payload: "please check your email." });
+                resolve({ payload: "please check your email reset password." });
             })
             .catch((error) => {
-                reject({ payload: error });
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                reject({ payload: errorCode });
             })
     })
 }

@@ -57,7 +57,6 @@ function Login_signup(props) {
         // }
         
         dispatch(signUpAction(values))
-        dispatch(fogotPasswordAction(values))
     }
     
     const handleLogin = (values) => {
@@ -74,10 +73,12 @@ function Login_signup(props) {
         initialValues: initVal,
         validationSchema : schema,
         onSubmit: values => {
-            if(usertype === 'login'){
+            if (usertype === 'login' && reset === false) {
                 handleLogin(values);
-            }else{
+            } else if (usertype === 'login' && reset === false) {
                 handleData(values);
+            }else{ 
+                dispatch(fogotPasswordAction(values));
             }
         //   alert(JSON.stringify(values, null, 2));
         },
