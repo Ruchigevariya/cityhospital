@@ -50,7 +50,7 @@ function* GoogleSignIn(action) {
 function* signOut(action) {
   try{
     const user = yield call(SignOutApi)
-    yield put(signedOutAction(user))
+    yield put(signedInAction(user))
     history.push("/")
 
     yield put(setAlert({ text: user.payload, color: "success" }))
