@@ -25,5 +25,5 @@ export const signedOutAction = () => (dispatch) => {
 }
 
 export const fogotPasswordAction = (data) => (dispatch) => {
-    dispatch({type: ActionTypes.FORGOTPASSWORDACTION, payload: data})
+    dispatch({type: ActionTypes.FORGOTPASSWORD_USER, payload: data})
 }
