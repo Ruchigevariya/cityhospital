@@ -73,9 +73,9 @@ function Login_signup(props) {
         initialValues: initVal,
         validationSchema : schema,
         onSubmit: values => {
-            if (usertype === 'login' && reset === false) {
+            if (usertype === 'login' && reset === "false") {
                 handleLogin(values);
-            } else if (usertype === 'login' && reset === false) {
+            } else if (usertype === 'login' && reset === "false") {
                 handleData(values);
             }else{ 
                 dispatch(fogotPasswordAction(values));
