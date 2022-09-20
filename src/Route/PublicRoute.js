@@ -10,7 +10,7 @@ function PublicRoute({component:Component, restricted = false, ...rest}) {
                 <Redirect to={"/"}/>
                 :
                 <Component {...props}/>
-            )}
+            )}  
             />
 
         </div>
