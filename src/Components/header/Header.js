@@ -65,7 +65,7 @@ function Header(props) {
                             </ul>
                             <i className="bi bi-list mobile-nav-toggle" />
                         </nav>
-                        <NavLink className="appointment-btn scrollto" to={"appointment"}><span className="d-none d-md-inline">Make an</span>
+                        <NavLink className="appointment-btn scrollto" to={"bookappointment"}><span className="d-none d-md-inline">Make an</span>
                             Appointment</NavLink>
                         {
                             auth.user === null ?
